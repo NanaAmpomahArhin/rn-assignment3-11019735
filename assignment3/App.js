@@ -1,16 +1,19 @@
 import {
+  Button,
   FlatList,
   Image,
-  SafeAreaView,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
 import { categoriesData } from "./Data/categoriesData";
+import { ongoingTaskData } from "./Data/ongoingTasksData";
+
 export default function App() {
   return (
-    <SafeAreaView style={{ backgroundColor: "#F7F0E8", flex: 1 }}>
+    <ScrollView style={{ backgroundColor: "#F7F0E8", flex: 1 }}>
       <View style={{ padding: 15, gap: 20 }}>
         <View
           style={{
@@ -92,7 +95,53 @@ export default function App() {
             showsHorizontalScrollIndicator={false}
           />
         </View>
+
+        {/**Ongoing Tasks */}
+        <View style={{ gap: 20 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 20, letterSpacing: 1 }}>
+            Ongoing Task
+          </Text>
+
+          <FlatList
+            data={ongoingTaskData}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  gap: 10,
+                  height: 150,
+                  backgroundColor: "white",
+                  borderWidth: 1,
+                  borderColor: "#E8D1BA",
+                  marginRight: 5,
+                  padding: 15,
+                  borderRadius: 10,
+                  width: "100%",
+                  marginBottom: 5,
+                  justifyContent: "center",
+                }}
+              >
+                <View>
+                  <Text
+                    style={{
+                      fontWeight: "medium",
+                      fontSize: 20,
+                      letterSpacing: 1,
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                </View>
+              </View>
+            )}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
+
+        {/**Button */}
+        <View>
+          <Button title="Click Me" onPress={() => alert("Button Clicked")} />
+        </View>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
