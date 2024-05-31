@@ -135,11 +135,11 @@ export default function App() {
             )}
             keyExtractor={(item) => item.id}
           />
-        </View>
 
-        {/**Button */}
-        <View>
-          <Button title="Click Me" onPress={() => alert("Button Clicked")} />
+          {/**Button */}
+          <View>
+            <Button title="Click Me" onPress={() => alert("Button Clicked")} />
+          </View>
         </View>
       </View>
     </ScrollView>
