@@ -1,4 +1,5 @@
 import {
+  FlatList,
   Image,
   SafeAreaView,
   Text,
@@ -6,7 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
+import { categoriesData } from "./Data/categoriesData";
 export default function App() {
   return (
     <SafeAreaView style={{ backgroundColor: "#F7F0E8", flex: 1 }}>
@@ -51,6 +52,45 @@ export default function App() {
           >
             <Image source={require("./assets/Vector.png")} />
           </View>
+        </View>
+
+        {/**Categories */}
+        <View style={{ gap: 10 }}>
+          <Text style={{ fontWeight: "bold", fontSize: 20, letterSpacing: 1 }}>
+            Categories
+          </Text>
+
+          <FlatList
+            data={categoriesData}
+            renderItem={({ item }) => (
+              <View
+                style={{
+                  gap: 10,
+                  backgroundColor: "white",
+                  marginRight: 5,
+                  padding: 15,
+                  borderRadius: 10,
+                }}
+              >
+                <View>
+                  <Text
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: 20,
+                      letterSpacing: 1,
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                  <Text>{item.description}</Text>
+                </View>
+                <Image source={item.image} />
+              </View>
+            )}
+            keyExtractor={(item) => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
       </View>
     </SafeAreaView>
