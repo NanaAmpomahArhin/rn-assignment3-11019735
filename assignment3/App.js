@@ -2,6 +2,7 @@ import {
   Image,
   SafeAreaView,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -29,6 +30,27 @@ export default function App() {
           >
             <Image source={require("./assets/person.png")} />
           </TouchableOpacity>
+        </View>
+
+        {/**The Search Bar */}
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          {/**The TextInput */}
+          <TextInput
+            placeholder="Search"
+            style={{
+              backgroundColor: "white",
+              width: "80%",
+              height: 50,
+              borderRadius: 10,
+              padding: 5,
+            }}
+          />
+          {/**The Filter Icon */}
+          <View
+            style={{ backgroundColor: "#F0522F", padding: 8, borderRadius: 10 }}
+          >
+            <Image source={require("./assets/Vector.png")} />
+          </View>
         </View>
       </View>
     </SafeAreaView>
